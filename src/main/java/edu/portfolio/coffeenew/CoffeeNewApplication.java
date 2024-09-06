@@ -1,0 +1,13 @@
+package edu.portfolio.coffeenew;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class CoffeeNewApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(CoffeeNewApplication.class, args);
+    }
+
+}
