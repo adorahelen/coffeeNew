@@ -6,9 +6,10 @@ import lombok.*;
 import java.time.LocalDateTime;
 import java.util.List;
 
-
-@Entity
-@Table(name = "orders")
+@Getter
+@Setter
+@ToString
+@Entity(name = "orders")
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,9 +26,9 @@ public class Order {
     private String postcode;
 
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<OrderItem> orderItems;
+    private List<OrderItem> orderItems;// 원투 매니로 상대 쪽에 외래키 조건을 걸었지만, 칼럼이 되지는 않음
 
-    @Enumerated(EnumType.STRING)
+    @Enumerated(EnumType.STRING) // 이넘형태를 칼럼으로, 오디널은 숫자로, 이건 밸류로 지정 하는 부분 이다.
     @Column(name = "order_status", length = 50, nullable = false)
     private OrderStatus orderStatus;
 
@@ -41,13 +42,18 @@ public class Order {
     public Order() {
     }
 
-    public Order(String email, String address, String postcode, List<OrderItem> orderItems, OrderStatus orderStatus) {
+    private Category category;
+
+    // 모든 필드를 초기화하는 생성자
+    @Builder
+    public Order(Long orderId, String email, String address, String postcode, List<OrderItem> orderItems, OrderStatus orderStatus, LocalDateTime createdAt, LocalDateTime updatedAt) {
+        this.orderId = orderId;
         this.email = email;
         this.address = address;
         this.postcode = postcode;
         this.orderItems = orderItems;
         this.orderStatus = orderStatus;
-        this.createdAt = LocalDateTime.now();
-        this.updatedAt = LocalDateTime.now();
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
     }
 }
