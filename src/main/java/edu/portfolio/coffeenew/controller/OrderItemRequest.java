@@ -2,7 +2,7 @@ package edu.portfolio.coffeenew.controller;
 
 import edu.portfolio.coffeenew.entity.Category;
 
-public class OrderItemRequest {
+public class OrderItemRequest { // 서비스 단을 위한 디티오(컨트롤러 단 디티오를 위한 디티오)
 
         private Long productId;
         private Category category;
