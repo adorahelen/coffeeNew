@@ -28,6 +28,9 @@ public class Order {
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<OrderItem> orderItems;// 원투 매니로 상대 쪽에 외래키 조건을 걸었지만, 칼럼이 되지는 않음
 
+//    Order 클래스가 이미 List<OrderItem>을 가지고 있으며,
+//    cascade = CascadeType.ALL과 orphanRemoval = true가 설정되어 있어야 합니다.
+
     @Enumerated(EnumType.STRING) // 이넘형태를 칼럼으로, 오디널은 숫자로, 이건 밸류로 지정 하는 부분 이다.
     @Column(name = "order_status", length = 50, nullable = false)
     private OrderStatus orderStatus;

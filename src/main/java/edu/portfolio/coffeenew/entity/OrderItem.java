@@ -1,9 +1,12 @@
 package edu.portfolio.coffeenew.entity;
 
 import jakarta.persistence.*;
+import lombok.Data;
 
 import java.time.LocalDateTime;
 
+
+@Data
 @Entity
 @Table(name = "order_items")
 public class OrderItem {

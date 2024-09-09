@@ -12,11 +12,11 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "products")
+@Table(name = "products")  // 테이블 이름을 'products'로 설정
 public class Product {
 
     @Id
-    @GeneratedValue //(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     @Column(name = "product_id")
     private Long productId;
     // 처음에 오토인크리먼트 안해놔서 (이미 구현됨, 지금은 저거 넣으면 에러남)
